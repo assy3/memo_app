@@ -31,7 +31,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="106dp"
             android:entries="@array/operators"
-            app:layout_constraintBottom_toTopOf="@+id/editText3"
+            app:layout_constraintBottom_toTopOf="@+id/calcResult"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -84,7 +84,7 @@
             app:layout_constraintStart_toStartOf="@+id/calcButton1" />
 
         <EditText
-            android:id="@+id/editText3"
+            android:id="@+id/calcResult"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="29dp"
@@ -104,8 +104,8 @@
             android:layout_marginTop="60dp"
             android:background="@drawable/button_background"
             android:text="@string/button_next"
-            app:layout_constraintStart_toStartOf="@+id/editText3"
-            app:layout_constraintTop_toBottomOf="@+id/editText3" />
+            app:layout_constraintStart_toStartOf="@+id/calcResult"
+            app:layout_constraintTop_toBottomOf="@+id/calcResult" />
 
     </android.support.constraint.ConstraintLayout>
     </ScrollView>
