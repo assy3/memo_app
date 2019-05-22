@@ -89,8 +89,12 @@ public class MainActivity extends AppCompatActivity implements TextWatcher {
     // 計算を行う
     private int calc() {
         // 入力内容を取得する
-        String input1 = Integer.parseInt(input1);
-        String input2 = Integer.parseInt(input2);
+        String input1 = numberInput1.getText().toString();
+        String input2 = numberInput2.getText().toString();
+
+        // intにキャスト
+        int number1 = Integer.parseInt(input1);
+        int number2 = Integer.parseInt(input2);
 
         // Spinenrから選択中のindexを取得する
         int operator = operatorSelector.getSelectedItemPosition();
@@ -105,9 +109,10 @@ public class MainActivity extends AppCompatActivity implements TextWatcher {
                 return number1 * number2;
             case 3: // 割り算
                 return number1 / number2;
-
+            default:
+                // 通常発生しない
+                throw new RuntimeException();
         }
-
     }
 }
 
