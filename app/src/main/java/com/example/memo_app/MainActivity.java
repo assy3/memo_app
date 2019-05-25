@@ -1,5 +1,6 @@
 package com.example.memo_app;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -13,6 +14,10 @@ import android.widget.TextView;
 import static com.example.memo_app.R.layout.activity_another_calc;
 
 public class MainActivity extends AppCompatActivity implements TextWatcher, View.OnClickListener {
+    //  上の「計算ボタン」を押したときのリクエストコード
+    private static final int REQUEST_CODE_ANOTHER_CALC_1 = 1;
+    //  上の「計算ボタン」を押したときのリクエストコード
+    private static final int REQUEST_CODE_ANOTHER_CALC_2 = 2;
 
     // 上のEditText
     private EditText numberInput1;
@@ -133,9 +138,13 @@ public class MainActivity extends AppCompatActivity implements TextWatcher, View
         switch (id){
             // 上の計算ボタン
             case R.id.calcButton1:
+                Intent intent1 = new Intent(this, AnotherCalcActivity.class);
+                startActivityForResult(intent1, REQUEST_CODE_ANOTHER_CALC_1);
                 break;
             // 下の計算ボタン
             case R.id.calcButton2:
+                Intent intent2 = new Intent(this, AnotherCalcActivity.class);
+                startActivityForResult(intent2, REQUEST_CODE_ANOTHER_CALC_2);
                 break;
             // 続けて計算するボタン
             case R.id.nextButton:
@@ -143,6 +152,29 @@ public class MainActivity extends AppCompatActivity implements TextWatcher, View
         }
 
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode != RESULT_OK) return;
+
+        // 結果データセットを取り出す
+        Bundle resultBundle = data.getExtras();
+
+        // 結果データセットに、所定のキーが含まれていない場合、何もしない
+        if(!resultBundle.containsKey("result"))return;
+
+        // 結果データキーから"result"キーに対応するint値を取り出す
+        int result = resultBundle.getInt("result");
+
+        if(requestCode == REQUEST_CODE_ANOTHER_CALC_1){
+            numberInput1.setText(String.valueOf(result));
+        }else if(requestCode == REQUEST_CODE_ANOTHER_CALC_2){
+            numberInput1.setText(String.valueOf(result));
+        }
+    }
+
 }
 
 
