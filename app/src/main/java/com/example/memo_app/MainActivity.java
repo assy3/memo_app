@@ -5,13 +5,14 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import static com.example.memo_app.R.layout.activity_another_calc;
 
-public class MainActivity extends AppCompatActivity implements TextWatcher {
+public class MainActivity extends AppCompatActivity implements TextWatcher, View.OnClickListener {
 
     // 上のEditText
     private EditText numberInput1;
@@ -30,6 +31,15 @@ public class MainActivity extends AppCompatActivity implements TextWatcher {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //setContentView(activity_another_calc);
+
+        // リスナーにボタンを登録することでボタンをクリックしたときにonClick()関数が呼び出される
+
+        // 上の「計算ボタン」
+        findViewById(R.id.calcButton1).setOnClickListener(this);
+        // 下の「計算ボタン」
+        findViewById(R.id.calcButton2).setOnClickListener(this);
+        // 「続けて計算するボタン」
+        findViewById(R.id.nextButton).setOnClickListener(this);
 
         // 上のEditText
         numberInput1 = (EditText)findViewById(R.id.numberInput1);
@@ -113,6 +123,25 @@ public class MainActivity extends AppCompatActivity implements TextWatcher {
                 // 通常発生しない
                 throw new RuntimeException();
         }
+    }
+
+    @Override
+    public void onClick(View v){
+        // タップされたときの処理を実装する
+        // タップされたViewのIDを取得する
+        int id = v.getId();
+        switch (id){
+            // 上の計算ボタン
+            case R.id.calcButton1:
+                break;
+            // 下の計算ボタン
+            case R.id.calcButton2:
+                break;
+            // 続けて計算するボタン
+            case R.id.nextButton:
+                break;
+        }
+
     }
 }
 
