@@ -48,17 +48,14 @@ public class AnotherCalcActivity extends AppCompatActivity implements TextWatche
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_another_calc2);
+        setContentView(R.layout.activity_another_calc);
         //setContentView(activity_another_calc);
 
         // リスナーにボタンを登録することでボタンをクリックしたときにonClick()関数が呼び出される
 
-        // 上の「計算ボタン」
-        findViewById(R.id.calcButton1).setOnClickListener(this);
-        // 下の「計算ボタン」
-        findViewById(R.id.calcButton2).setOnClickListener(this);
+
         // 「続けて計算するボタン」
-        findViewById(R.id.nextButton).setOnClickListener(this);
+        findViewById(R.id.backButton).setOnClickListener(this);
 
         // 上のEditText
         numberInput1 = (EditText) findViewById(R.id.numberInput1);
