@@ -148,6 +148,13 @@ public class MainActivity extends AppCompatActivity implements TextWatcher, View
                 break;
             // 続けて計算するボタン
             case R.id.nextButton:
+                // 「続けて計算するボタンが実装されたときの処理」
+                // 遷移前の画面 EditTextの両方に値があれば処理
+                int result = calc();
+                if(checkEditTextInput());
+                numberInput1.setText(String.valueOf(result));
+                refreshResult();
+
                 break;
         }
 
@@ -173,6 +180,9 @@ public class MainActivity extends AppCompatActivity implements TextWatcher, View
         }else if(requestCode == REQUEST_CODE_ANOTHER_CALC_2){
             numberInput1.setText(String.valueOf(result));
         }
+
+        // 計算をし直して、結果を表示する
+        refreshResult();
     }
 
 }
